@@ -2,7 +2,16 @@
 #include <stdint.h>
 
 #if defined(__GNUC__)
-	#include <cpuid.h>
+	// #include <cpuid.h>
+#define __cpuid(level, a, b, c, d)                      \
+  __asm__ ("cpuid\n\t"                                  \
+           : "=a" (a), "=b" (b), "=c" (c), "=d" (d)     \
+           : "0" (level))
+
+#define __cpuid_count(level, count, a, b, c, d)         \
+  __asm__ ("cpuid\n\t"                                  \
+           : "=a" (a), "=b" (b), "=c" (c), "=d" (d)     \
+           : "0" (level), "2" (count))
 #elif defined(_MSC_VER)
 	#include <intrin.h>
 #endif
@@ -11,7 +20,6 @@
 	#include <cpuinfo-mock.h>
 #endif
 #include <x86/api.h>
-
 
 #if defined(__GNUC__) || defined(_MSC_VER)
 	static inline struct cpuid_regs cpuid(uint32_t eax) {
