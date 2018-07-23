@@ -10,7 +10,6 @@ parser.add_argument("--mock", dest="mock", action="store_true")
 
 def main(args):
     options = parser.parse_args(args)
-    options.mock = True
     build = confu.Build.from_options(options)
 
     macros = {
