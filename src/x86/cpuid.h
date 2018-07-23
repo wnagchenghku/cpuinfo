@@ -3,15 +3,6 @@
 
 #if defined(__GNUC__)
 	// #include <cpuid.h>
-#define __cpuid(level, a, b, c, d)                      \
-  __asm__ ("cpuid\n\t"                                  \
-           : "=a" (a), "=b" (b), "=c" (c), "=d" (d)     \
-           : "0" (level))
-
-#define __cpuid_count(level, count, a, b, c, d)         \
-  __asm__ ("cpuid\n\t"                                  \
-           : "=a" (a), "=b" (b), "=c" (c), "=d" (d)     \
-           : "0" (level), "2" (count))
 #elif defined(_MSC_VER)
 	#include <intrin.h>
 #endif
