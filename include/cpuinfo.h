@@ -444,15 +444,14 @@ struct cpuinfo_processor {
 	const struct cpuinfo_cluster* cluster;
 	/** Physical package containing this logical processor */
 	const struct cpuinfo_package* package;
-#if defined(__linux__)
+// #if defined(__linux__)
 	/**
 	 * Linux-specific ID for the logical processor:
 	 * - Linux kernel exposes information about this logical processor in /sys/devices/system/cpu/cpu<linux_id>/
 	 * - Bit <linux_id> in the cpu_set_t identifies this logical processor
 	 */
 	int linux_id;
-#endif
-	int linux_id;
+// #endif
 #if defined(_WIN32)
 	/** Windows-specific ID for the group containing the logical processor. */
 	uint16_t windows_group_id;
