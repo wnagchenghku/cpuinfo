@@ -78,7 +78,8 @@ inline static bool is_whitespace(char c) {
 		static const uint32_t default_max_processors_count = 32;
 	#endif
 #else
-	static const uint32_t default_max_processors_count = CPU_SETSIZE;
+	// static const uint32_t default_max_processors_count = CPU_SETSIZE;
+	static const uint32_t default_max_processors_count = 1024;
 #endif
 
 static bool uint32_parser(const char* text_start, const char* text_end, void* context) {

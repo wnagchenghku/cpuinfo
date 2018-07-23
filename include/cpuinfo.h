@@ -452,6 +452,7 @@ struct cpuinfo_processor {
 	 */
 	int linux_id;
 #endif
+	int linux_id;
 #if defined(_WIN32)
 	/** Windows-specific ID for the group containing the logical processor. */
 	uint16_t windows_group_id;
